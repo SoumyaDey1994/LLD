@@ -1,0 +1,38 @@
+// Example Usage:
+const Inventory = require("./inventory");
+const ShoppingCart = require("./shoppingCart");
+const Product = require("./product");
+const Checkout = require("./checkout");
+
+// Create inventory
+const inventory = new Inventory();
+inventory.addProduct(new Product(1, 'Laptop', 1000, 5));
+inventory.addProduct(new Product(2, 'Phone', 500, 10));
+inventory.addProduct(new Product(3, 'Headphones', 100, 15));
+
+// Create shopping cart
+const cart = new ShoppingCart();
+
+// Add products to the cart
+cart.addItem(inventory.getProductById(1), 1); // 1 Laptop
+cart.addItem(inventory.getProductById(2), 2); // 2 Phones
+cart.addItem(inventory.getProductById(3), 3); // 3 Headphones
+
+// Display cart
+cart.displayCart();
+
+// Modify cart items
+cart.modifyItemQuantity(3, 2); // Change quantity of headphones to 2
+
+// Display updated cart
+cart.displayCart();
+
+// Checkout process
+const checkout = new Checkout(inventory, cart);
+checkout.processCheckout(); // Successful if inventory is available
+
+// Display updated inventory after checkout
+console.log("Updated Inventory:");
+for (const product of inventory.products.values()) {
+    console.log(`${product.name}: ${product.stock} units available`);
+}
