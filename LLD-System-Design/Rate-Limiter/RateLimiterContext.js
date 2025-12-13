@@ -1,4 +1,4 @@
-class RateLimiterContext {
+class RateLimiter {
   constructor(strategy) {
     this.strategy = strategy;
   }
@@ -12,4 +12,4 @@ class RateLimiterContext {
   }
 }
 
-module.exports = RateLimiterContext;
+module.exports = RateLimiter;

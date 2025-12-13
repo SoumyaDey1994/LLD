@@ -1,11 +1,11 @@
 const FixedWindowRateLimiter = require("./FixedWindowRateLimiter");
-const RateLimiterContext = require("./RateLimiterContext");
+const RateLimiter = require("./RateLimiterContext");
 const SlidingWindowRateLimiter = require("./SlidingWindowRateLimiter");
 
 const fixedWindowRl = new FixedWindowRateLimiter(3, 5000);
 const slidingWindowRl = new SlidingWindowRateLimiter(3, 5000);
 
-let limiter = new RateLimiterContext(fixedWindowRl);
+let limiter = new RateLimiter(fixedWindowRl);
 
 let counter = 1,
   counter2 = 1;
@@ -16,7 +16,7 @@ let counter = 1,
 //     counter++;
 // }, 1000);
 
-limiter = new RateLimiterContext(slidingWindowRl);
+limiter = new RateLimiter(slidingWindowRl);
 const intervalAgent = setInterval(() => {
   if (counter2 === 15) clearInterval(intervalAgent);
 
