@@ -24,6 +24,7 @@ export class ParkingSpot {
       );
       return true;
     }
+    
     console.log(
       `Vehicle ${this.vehicle.vehicleNo} cannot be parked in spot ${this.id}`
     );
