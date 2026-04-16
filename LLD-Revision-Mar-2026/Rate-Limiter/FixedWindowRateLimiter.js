@@ -20,7 +20,7 @@ export class FixedWindowRateLimiter extends RateLimiter {
 
     const value = this.store.get(key);
     if (value.windowStart !== windowStart) {
-      value.count = 1;
+      value.count = 0;
       value.windowStart = windowStart;
     }
 

@@ -1,6 +1,6 @@
 import { RateLimiter } from "./RateLimiter.js";
 
-export class SlidingWindowRateLimiter extends RateLimiter{
+export class SlidingWindowRateLimiter extends RateLimiter {
   constructor(limit, delayInMs) {
     super(limit, delayInMs);
     this.store = new Map();
@@ -16,7 +16,7 @@ export class SlidingWindowRateLimiter extends RateLimiter{
     const currTime = Date.now();
     const windowStart = currTime - this.delay;
 
-    if (timestamps[0] && timestamps[0] < windowStart) {
+    while (timestamps.length > 0 && timestamps[0] < windowStart) {
       timestamps.shift();
     }
 
